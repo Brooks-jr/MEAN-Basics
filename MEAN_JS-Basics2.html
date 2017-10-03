@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <title>  :add_title:  </title>
+    </head>
+    <body>
+    <div class="container">
+
+            
+
+            function magic_multiply(x, y)
+            <!-- TEST 1 -->
+            {
+                if(Array.isArray(x))
+                {
+                  for(var i in x)
+                    {
+                     x[i] *= y;
+                    }
+                  return x;
+                }
+                if(typeof x === 'number' && typeof y === 'string') 
+                {
+                  return "Error:Can not multiply by string";
+                }
+                if(typeof y === 'number' && typeof x === 'string') 
+                {
+                  var newX = '';
+                  for(var z = 0; z<y; z++)
+                  {
+                   newX += x;
+                  }
+                  return newX;
+                }
+                else
+                {
+                  return x * y;
+                }
+              }
+
+            let test1 = magic_multiply(5,2);
+            console.log(test1);
+
+            let test2 = magic_multiply(0, 0);
+            console.log(test2);
+
+            let test3 = magic_multiply([1, 2, 3], 2);
+            console.log(test3);
+
+            let test4 = magic_multiply(7, "three");
+            console.log(test4);
+
+            let test5 = magic_multiply("Brendo", 4);
+            console.log(test5);
+
+<!-- ================================================================== -->
+
+    </div>
+    </body>
+</html>

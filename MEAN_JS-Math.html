@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <title>  :add_title:  </title>
+    </head>
+    <body>
+    <div class="container">
+
+         <!-- MATH 1 -->
+        function zero_negativity(arr)
+        {
+            var noNeg = true;
+            
+            for(var i = 0; i < arr.length; i++)
+            {   
+               
+                if(arr[i] < 0)
+                {
+                   noNeg = false;
+                }
+               
+            } 
+            return noNeg;
+        }
+        zero_negativity(arr);
+
+<!-- ============================================================== -->
+         <!-- MATH 2 -->
+
+         function is_even(num)
+            {
+                var even = true;
+                if(num % 2 !== 0)
+                    {
+                    even = false;
+                    }
+                return even;
+            }
+            is_even(num);
+
+<!-- ============================================================== -->
+         <!-- MATH 3 -->
+
+         function how_many_even(arr)
+         {
+            var isEven = 0;
+            for(var i = 0; i < arr.length; i++)
+            {
+                if(arr[i] % 2 === 0)
+                {
+                    isEven += 1;
+                }
+            }
+            return "there are " + isEven + " even numbers"
+         }
+         how_many_even(arr)
+
+<!-- ============================================================== -->
+         <!-- MATH 4 -->
+
+         function create_dummy_array(n)
+         {
+            var dummyArr = [];
+            for(var i = 0; i < n; i++)
+            {
+                dummyArr.push(Math.floor(Math.random() * (10 - 0)));
+            }
+            return dummyArr;
+         }
+         create_dummy_array(n);
+
+<!-- ============================================================== -->
+         <!-- MATH 5 -->
+
+         function random_choice(arr)
+         {
+            return arr[Math.floor(Math.random() * (arr.length))];
+         }
+         random_choice(arr);
+
+
+    </div>
+    </body>
+</html>
