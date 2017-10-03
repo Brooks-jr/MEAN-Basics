@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title> :add_title: </title>
+</head>
+
+    <body>
+        <script>
+            function Ninja(name) 
+            {
+                this.name = name;
+                this.health = 100;
+                var speed = 3;
+                var strength = 3;
+
+                this.stats = function() 
+                {
+                    console.log("Name: " + this.name + ", Health: " + this.health + ", Speed: " + speed + ", Strength: " + strength);
+
+                    return this;
+                }
+            }
+
+            Ninja.prototype.sayName = function() 
+            {
+                console.log("My name is " + this.name);
+                return this;
+            }
+
+            Ninja.prototype.drinkSake = function() 
+            {
+                this.health += 10;
+                return this;
+            }
+
+            const ninja1 = new Ninja("Bang Shishigami");
+            ninja1.sayName();
+            ninja1.stats();
+
+        </script>
+    </body>
+
+</html>
