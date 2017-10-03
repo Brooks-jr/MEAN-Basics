@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title> :add_title: </title>
+</head>
+
+    <body>
+        <script>
+            // parent Dot class
+            class Dot {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                }
+                showLocation() {
+                    console.log(`This Dot is at x ${this.x} and y ${this.y}`);
+                }
+            }
+            // child Circle class
+            class Circle extends Dot {
+                constructor(x, y, radius) {
+                    super(x, y);
+                    this.radius = radius
+                }
+            }
+            // we can now create Circles
+            let circle1 = new Circle(33, 33, 33);
+            // same attributes as a Dot, plus a radius
+            console.log(circle1);
+            // and Circles can access Dot methods
+            circle1.showLocation();
+
+            class Circle {
+                constructor(x, y, radius) {
+                    this.x = x;
+                    this.y = y;
+                    this.radius = radius;
+                }
+                get diameter() {
+                    return this.radius * 2;
+                }
+            }
+            let circle1 = new Circle(1, 2, 5);
+            console.log(circle1.diameter);
+        </script>
+    </body>
+
+</html>
