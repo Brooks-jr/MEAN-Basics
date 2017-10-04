@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <title> :add_title: </title>
+    </head>
+
+    <body>
+        <div class="container">
+            <script>
+                function getStuffFromDatabase(resolve, reject) {
+                    var data = "whee"
+                    setTimeout(function () {
+                        // if (typeof(callback) == 'function'){
+                        data = [{ name: 'Todd' }, { name: 'Michael' }, { name: 'Portia' }];
+                        resolve(data);
+                        // }
+                    }, 1000);
+                    //reject(); comment this line in and out!
+                    // return data;
+                }
+                function requestDataFromDatabase() {
+                    console.log('running');
+                    //creates promise
+                    var data = new Promise(function (resolve, reject) {
+                        getStuffFromDatabase(resolve, reject); // kind of like a shiny callback
+                    });
+                    // if promise is successful (keeps me from putting all the logic in the callback)
+                    data.then(function (data) {
+                        console.log(data, "ASynchronous");
+                        for (var i = 0; i < data.length; i++) {
+                            console.log(data[i].name);
+                        }
+                    });
+                    data.catch(function () {
+                        console.log('failure');
+                    })
+                    console.log('end');
+                }
+                requestDataFromDatabase();
+            </script>
+        </div>
+    </body>
+
+</html>
