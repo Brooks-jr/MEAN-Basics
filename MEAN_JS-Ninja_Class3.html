@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <title> :add_title: </title>
+    </head>
+
+    <body>
+        <script>
+            
+            class Ninja 
+            {
+                constructor(name) 
+                {
+                    this.name = name;
+                    this.health = 100;
+                    this.speed = 3;
+                    this.strength = 3;
+                }
+
+                sayName() 
+                {
+                    console.log(`I am the great ninja, ${this.name}!!`);
+                }
+
+                stats() 
+                {
+                    console.log(`Name: ${this.name}, Health: ${this.health}, Speed: ${this.speed}, Strength: ${this.strength}`);
+                }
+
+                drinkSake() 
+                {
+                    this.health += 10;
+                    console.log(`${this.name} drank some sake.  ${this.name}'s health is now  ${this.health}`);
+
+                    return this;
+                }
+
+            }
+
+            const ninja1 = new Ninja("Bang Shishigami");
+            ninja1.sayName();
+            ninja1.stats();
+            ninja1.drinkSake();
+
+        </script>
+    </body>
+
+</html>
