@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/style/style.css">
+        <title>Dojo Survey</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <form action="/results" method="POST">
+                Name: <br><input type="text" name="name"><br><br>
+                
+                Hideout Location:<br> <select name="hideout_location">
+                    <option value="Central City">Star City</option>
+                    <option value="Metropolis">Metropolis</option>
+                    <option value="Gotham City">Gotham City</option>
+                    <option value="Themyscira">Themyscira</option>
+                    </select><br><br>
+               
+                Favorite Weapon:<br> <select name="fav_weap">
+                    <option value="Heat Vision">Heat Vision</option>
+                    <option value="Batarang">Batarang</option>
+                    <option value="Sword and Shield">Sword and Shield</option>
+                    <option value="Bow and Arrow">Bow and Arrow</option>
+                    </select><br><br>
+                
+                Comment(optional):<br>
+                <textarea name="say_it" id="comment" cols="30" rows="5"></textarea>
+               
+                <br><input type="submit" value="submit">
+            </form>
+        </div>
+    </body>
+
+</html>
