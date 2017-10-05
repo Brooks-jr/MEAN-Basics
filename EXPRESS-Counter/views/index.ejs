@@ -10,7 +10,19 @@
     </head>
 
     <body>
-        <h1>Express Project Template!</h1>
+        <fieldset>
+        <legend><h3>Page Views</h3></legend>
+        <h3>Counter</h3>
+        <p><%= pageviews %></p>
+
+        <form action="/add2" method="post">
+            <button name="add2">2 Count</button>
+        </form>
+
+        <form action='/reset' method='post'>
+            <button name="reset">Reset</button>
+        </form>
+        </fieldset>
     </body>
 
 </html>

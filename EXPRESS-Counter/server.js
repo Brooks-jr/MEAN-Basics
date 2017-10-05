@@ -4,9 +4,11 @@ var express = require("express");
 var path = require("path");
 // create the express app
 var app = express();
-var bodyParser = require('body-parser');
 var session = require('express-session');
+
+var bodyParser = require('body-parser');
 // use it!
+app.use(session({secret: 'im mr.king dice, im the gamest in the land'}));
 app.use(bodyParser.urlencoded({ extended: true }));
 // static content
 app.use(express.static(path.join(__dirname, "./static")));
@@ -15,13 +17,26 @@ app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 // root route to render the index.ejs view
 app.get('/', function(req, res) {
- res.render("index");
+
+    if (req.session.views) {
+        req.session.views++
+       
+      } else {
+        req.session.views = 1
+      }
+    var pageviews = req.session.views;
+ res.render("index", {pageviews});
 })
 // post route for adding a user
-app.post('/users', function(req, res) {
- console.log("POST DATA", req.body);
- // This is where we would add the user to the database
- // Then redirect to the root route
+app.post('/add2', function(req, res) {
+    req.session.views++
+    var pageviews = req.session.views;
+ res.redirect('/');
+})
+
+app.post('/reset', function(req, res) {
+    req.session.views=0
+    var pageviews = req.session.views;
  res.redirect('/');
 })
 // tell the express app to listen on port 8000
