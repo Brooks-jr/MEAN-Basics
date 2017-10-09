@@ -3,14 +3,29 @@
 
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" type="text/css" href="/style/style.css">
-        <title>Document</title>
+        
+        <title>Welcome!</title>
     </head>
 
     <body>
-        <h1>Express Project Template!</h1>
+        <div id="add">
+        <fieldset>
+        <legend><h1>Add A Quote</h1></legend>
+        <a href="/ViewQuotes">View Quotes</a><br><br>
+        
+        <form action="/AddQuotes" method="post">
+
+            <label for="name">Name:</label><br>
+            <input type="text" name='name'><br><br>
+
+            <label for="quote">Quote:</label><br>
+            <textarea name="quote" rows="6" cols="40"></textarea><br>
+
+            <input type="submit" value="Add Quote">
+        </form>
+        </fieldset>
+        </div>
     </body>
 
 </html>
