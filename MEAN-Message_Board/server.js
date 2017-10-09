@@ -1,68 +1,165 @@
-// Require the Express Module
-var express = require('express');
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-var path = require('path');
-var app = express();
-// ====================================================================
+// // Require the Express Module
+// var express = require('express');
+// var mongoose = require('mongoose');
+// var bodyParser = require('body-parser');
+// var path = require('path');
+// var app = express();
+// var Schema = mongoose.Schema;
+// // ====================================================================
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, './static')));
-app.set('views', path.join(__dirname, './views'));
-app.set('view engine', 'ejs');
-// ====================================================================
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(express.static(path.join(__dirname, './static')));
+// app.set('views', path.join(__dirname, './views'));
+// app.set('view engine', 'ejs');
+// // ====================================================================
 
-mongoose.connect('mongodb://localhost/quotes');
-// ====================================================================
+// mongoose.connect('mongodb://localhost/messages');
+// // ====================================================================
 
-var MessageSchema = new mongoose.Schema({
-    text: {type: String, required: true }, 
-    comments: [{type: Schema.Types.ObjectId, ref: 'comment'}]
-   }, {timestamps: true });
-    mongoose.model('message', MessageSchema); // We are setting this Schema in our Models
-var Message = mongoose.model('message') // We are retrieving this Schema from our Models
+// var MessageSchema = new mongoose.Schema({
+//     name: {type: String, required: true},
+//     text: {type: String, required: true }, 
+//     _comments: [{type: Schema.Types.ObjectId, ref: 'comments'}]
+//    }, {timestamps: true });
+//     mongoose.model('messages', MessageSchema); // We are setting this Schema in our Models
+// var Message = mongoose.model('messages') // We are retrieving this Schema from our Models
 
 
-var CommentSchema = new mongoose.Schema({
-    _post: {type: Schema.Types.ObjectId, ref: 'message'},
-    text: {type: String, required: true }
-   }, {timestamps: true });
-   mongoose.model('comment', CommentSchema); // We are setting this Schema in our Models
-var Comment = mongoose.model('comment') // We are retrieving this Schema from our Models
-// ====================================================================
+// var CommentSchema = new mongoose.Schema({
+//     name: {type: String, required: true},    
+//     text: {type: String, required: true },
+//     _message: {type: Schema.Types.ObjectId, ref: 'messages'},    
+//    }, {timestamps: true });
+//    mongoose.model('comments', CommentSchema); // We are setting this Schema in our Models
+// var Comment = mongoose.model('comments') // We are retrieving this Schema from our Models
+// // ====================================================================
    
+// app.get("/", function(req, res)
+//     {
 
-app.get('/', function(req, res) 
-{
-    // This is where we will retrieve the users from the database and include them in the view page we will be rendering.
-    res.render('index');
-})
-
-app.get('/ViewQuotes', function(req, res)
-    {
-        Quote.find({}, function(err, results)
-            {
-                if(err) 
-                    { 
-                    console.log(err); 
-                    }
-                res.render('quotes', { quotes: results });
-            });
-    });
+//         Message.find({}, false, true).populate('_comments').exec(function(err, messages)
+//             {
+            
+//                 res.render('index', {messages: messages});
+            
+//             });
+    
+//     });
   
-app.post('/AddQuotes', function(req, res)
-    {
-        Quote.create(req.body, function(err)
-            {
-                if(err) 
-                    { 
-                        console.log(err); 
-                    }
-                    res.redirect('/ViewQuotes');
-            });
-    });
-// ====================================================================
+//     app.post("/AddMessage", function(req, res){
+//         var newMessage = new Message({name: req.body.name, message: req.body.message});
+//         newMessage.save(function(err){
+//             if(err){
+//                 console.log(err);
+//                 res.render('index.ejs', {errors: newMessage.errors});
+//             } else {
+//                 console.log("success");
+//                 res.redirect('/');
+//             }
+//         })
+//     })
 
-app.listen(8000, function() {
-    console.log("listening on port 8000");
+//     app.post("/AddComment/:id", function(req, res){
+//         var message_id = req.params.id;
+//         Message.findOne({_id: message_id}, function(err, message){
+//             var newComment = new Comment({name: req.body.name, text: req.body.comment});
+//             newComment._message = message._id;
+//             Message.update({_id: message._id}, {$push: {"_comments": newComment}}, function(err){
+    
+//             });
+//             newComment.save(function(err){
+//                 if(err){
+//                     console.log(err);
+//                     res.render('index.ejs', {errors: newComment.errors});
+//                 } else {
+//                     console.log("comment added");
+//                     res.redirect("/");
+//                 }
+//             });
+//         });
+//     });
+// // ====================================================================
+
+// app.listen(8000, function() {
+//     console.log("listening on port 8000");
+// })
+
+
+var express = require("express");
+var app = express();
+var mongoose = require("mongoose");
+var path = require("path");
+var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded());
+app.set("views", path.join(__dirname, "./views"));
+app.set("view engine", "ejs");
+app.get("/", function(req, res){
+	Message.find({}, false, true).populate('_comments').exec(function(err, messages){
+        console.log(messages[0]._comments)
+	      res.render('index', {messages: messages});
+	});
+});
+
+app.post("/message", function(req, res){
+	var newMessage = new Message({name: req.body.name, message: req.body.message});
+	newMessage.save(function(err){
+		if(err){
+			console.log(err);
+			res.render('index.ejs', {errors: newMessage.errors});
+		} else {
+			console.log("success");
+			res.redirect('/');
+		}
+	})
 })
+
+app.post("/comment/:id", function(req, res){
+	var message_id = req.params.id;
+	Message.findOne({_id: message_id}, function(err, message){
+		var newComment = new Comment({name: req.body.name, text: req.body.comment});
+		newComment._message = message._id;
+		Message.update({_id: message._id}, {$push: {_comments: newComment}}, function(err){
+
+		if(!err){
+            newComment.save(function(err){
+                if(err){
+                    console.log(err);
+                    res.render('index.ejs', {errors: newComment.errors});
+                } else {
+                    console.log("comment added");
+                    res.redirect("/");
+                }
+            
+            });
+        }
+		});
+	});
+});
+app.listen(8000, function(){
+	console.log("server running on port 8000");
+});
+mongoose.connect('mongodb://127.0.0.1/messages', function(err, db){
+	if(err){
+		console.log("error here");
+		console.log(err);
+	}
+});
+var Schema = mongoose.Schema;
+var MessageSchema = new mongoose.Schema({
+	name: String,
+	message: String,
+	_comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
+});
+MessageSchema.path('name').required(true, 'Name cannot be blank');
+MessageSchema.path('message').required(true, 'Message cannot be blank');
+mongoose.model("Message", MessageSchema);
+var Message = mongoose.model("Message");
+var CommentSchema = new mongoose.Schema({
+	name: String,
+	text: String,
+	_message: {type: Schema.Types.ObjectId, ref: 'Message'}
+});
+CommentSchema.path('name').required(true, 'Name cannot be blank');
+CommentSchema.path('text').required(true, 'Comment cannot be blank');
+mongoose.model("Comment", CommentSchema);
+var Comment = mongoose.model("Comment");

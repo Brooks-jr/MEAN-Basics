@@ -1,31 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="/style/style.css">
-        
-        <title>Welcome!</title>
-    </head>
 
-    <body>
-        <div id="add">
-        <fieldset>
-        <legend><h1>Add A Quote</h1></legend>
-        <a href="/ViewQuotes">View Quotes</a><br><br>
-        
-        <form action="/AddQuotes" method="post">
 
-            <label for="name">Name:</label><br>
-            <input type="text" name='name'><br><br>
+<html>
+        <head>
+            <title>Form</title>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script type="text/javascript">
+            
+            </script>
+        </head>
+        <body>
+            <div>
+                <h1>Mean Message Board</h1>
+           
+            <form action="/message" method="post">
 
-            <label for="quote">Quote:</label><br>
-            <textarea name="quote" rows="6" cols="40"></textarea><br>
+                <label for="name">Name:</label><br>            
+                <input type="text" name="name"><br><br>  
 
-            <input type="submit" value="Add Quote">
-        </form>
-        </fieldset>
+                <label for="message">Message:</label><br>                
+                <textarea cols="70" rows="5" name="message"></textarea><br><br>
+
+                <input id="post" type="submit" value="Post message">
+            </form> 
+            </div>
+             <% if(typeof(errors) != 'undefined' ) { %>
+                 <% for (var x in errors) { %>
+                  <h3><%= errors[x].message %></h3>
+                 <% } %>
+              <% } else { %>
+               
+                   <div>
+                    <% for(var i in messages) { %><fieldset>
+                        
+                        <h3><%= messages[i].name + " Says:"%> </h3>
+                        <h3>"<%= messages[i].message %>"</h3><br><br>
+                           
+                            <% for (var y in messages[i]._comments) { %> 
+                                
+                                <h5><%=messages[i]._comments[y].name + " replied: " %></h5>
+                                <h5>"<%=messages[i]._comments[y].text %>"</h5>
+                                <hr>
+                            <% } %>
+
+                        <form action=<%="/comment/" + messages[i]._id %> method="post">
+                            <label for="name">Name:</label><br>
+                            <input class="comment_input" type="text" name="name"><br><br>
+                           
+                            <label for="comment">Comment:</label><br>                            
+                            <textarea cols="70" rows="5" name="comment"></textarea><br><br>
+                            <input class="post2" type="submit" value="Post comment">
+                        </form></fieldset><br><br><br><br>
+                    
+                        
+                    <% } %>
+                
+             <% } %>
         </div>
-    </body>
+        </body>
+        </html>
 
-</html>
+        <style type="text/css">
+        
+        *
+{
+    background-color: black;
+    color: white;
+   
+    font-family: Arial, Helvetica, sans-serif;
+    
+    
+}
+
+div
+{
+    width: 700px;
+    margin-left: 25%
+    
+}
+
+
+        </style>
