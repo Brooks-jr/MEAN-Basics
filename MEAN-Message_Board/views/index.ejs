@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="/style/style.css">
+        
+        <title>Welcome!</title>
+    </head>
+
+    <body>
+        <div id="add">
+        <fieldset>
+        <legend><h1>Add A Quote</h1></legend>
+        <a href="/ViewQuotes">View Quotes</a><br><br>
+        
+        <form action="/AddQuotes" method="post">
+
+            <label for="name">Name:</label><br>
+            <input type="text" name='name'><br><br>
+
+            <label for="quote">Quote:</label><br>
+            <textarea name="quote" rows="6" cols="40"></textarea><br>
+
+            <input type="submit" value="Add Quote">
+        </form>
+        </fieldset>
+        </div>
+    </body>
+
+</html>
