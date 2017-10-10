@@ -37,9 +37,8 @@
                         <h3>"<%= messages[i].message %>"</h3><br><br>
                            
                             <% for (var y = 0; y < messages[i]._comments.length; y++) { %> 
-                                
-                                <h5><%= messages[i]._comments[y].name + " replied: " %></h5>
-                                <h5>"<%= messages[i]._comments[y].text %>"</h5>
+                                <h5><%=messages[i]._comments[y].name + " replied: " %></h5>
+                                <h5>"<%=messages[i]._comments[y].text %>"</h5>
                                 <hr>
                             <% } %>
 
