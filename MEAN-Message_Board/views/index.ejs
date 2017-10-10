@@ -33,12 +33,12 @@
                    <div>
                     <% for(var i in messages) { %><fieldset>
                         
-                        <h3><%= messages[i].name + " Says:"%> </h3>
-                        <h3>"<%= messages[i].message %>"</h3><br><br>
+                        <h2><%= messages[i].name + " Says:"%> </h2>
+                        <h2>"<%= messages[i].message %>"</h2><br><br>
                            
                             <% for (var y = 0; y < messages[i]._comments.length; y++) { %> 
-                                <h5><%=messages[i]._comments[y].name + " replied: " %></h5>
-                                <h5>"<%=messages[i]._comments[y].text %>"</h5>
+                                <h3><%=messages[i]._comments[y].name + " replied: " %></h3>
+                                <h4>"<%=messages[i]._comments[y].text %>"</h4>
                                 <hr>
                             <% } %>
 
@@ -61,10 +61,10 @@
 
         <style type="text/css">
         
-        *
+        *, h2
 {
     background-color: black;
-    color: white;
+    color: gainsboro;
    
     font-family: Arial, Helvetica, sans-serif;
     
@@ -77,6 +77,9 @@ div
     margin-left: 25%
     
 }
-
+h4
+{
+    color: grey;
+}
 
         </style>
