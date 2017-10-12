@@ -1,0 +1,51 @@
+
+/* div.container {
+    width: 970px;
+    margin: 0 auto;
+}
+table thead th {
+    text-align: left;
+} */
+
+
+h1
+{
+    text-align: center;
+}
+*
+{
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 5px;
+}
+
+th
+{
+    color: red;
+    font-size: 14pt;
+    margin-left: 10px;
+}
+
+#emails
+{
+    color:navy;
+    font-weight: bold;
+}
+
+#high
+{
+    color: green;
+}
+
+#low
+{
+    color: goldenrod;
+}
+
+div
+{
+    width: 700px;
+    margin-left: 25%;
+    
+}
+
