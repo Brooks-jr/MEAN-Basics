@@ -1,0 +1,33 @@
+ANGULAR COMMANDS
+
+//create new app//
+
+ng new ~APP NAME~
+=====================================
+
+//run in newly created app folder//
+
+ng generate component my-component 
+
+ng generate service my-service 
+
+ng generate class my-class
+=====================================
+
+//run app//
+
+ng serve
+=====================================
+
+//import into app.module.ts file//
+
+import { FormsModule } from '@angular/forms'; // <-- Import FormsModule
+
+import { HttpModule } from '@angular/http'; // <-- Import HttpModule
+
+( - goes into imports:[]
+
+FormsModule, // <-- Include module in our AppModules
+
+HttpModule // <-- Include module in our AppModules )
+=====================================
