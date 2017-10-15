@@ -8,6 +8,8 @@
   </h1>
   <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="><hr>
 </div>
+<!-- ================================================================================================== -->
+
 
 <form (submit)="onSubmit()">
 
@@ -25,7 +27,12 @@
       [(ngModel)]="user.first_name"
       #first_name='ngModel'
       />
+      
+      {{ first_name.errors | json }}
+      {{ first_name.valid | json }}
     </div>
+    
+<!-- ============================================================== -->
 
     <div class="form-group col-md-6">
       <label for="last_name" class="col-form-label">Last Name:</label>
@@ -40,7 +47,12 @@
       [(ngModel)]="user.last_name"
       #last_name='ngModel'
       />
+      
+      {{ last_name.errors | json }}
+      {{ last_name.valid | json }}
     </div>
+    
+<!-- ============================================================== -->
 
     <div class="form-group col-md-6">
       <label for="email" class="col-form-label">Email:</label>
@@ -52,8 +64,13 @@
       required 
       [(ngModel)]="user.email"
       #email='ngModel'
-      />
+      /> 
+      
+      {{ email.errors | json }}
+      {{ email.valid | json }}
     </div>
+   
+<!-- ============================================================== -->
 
     <div class="form-group col-md-6">
       <label for="password" class="col-form-label">Password:</label>
@@ -68,7 +85,13 @@
       [(ngModel)]="user.password"
       #password='ngModel'
       />
+      
+      {{ password.errors | json }}
+      {{ password.valid | json }}
     </div>
+    
+<!-- ============================================================== -->
+
 
     <div class="form-group col-md-6">
       <label for="address" class="col-form-label">Street Address:</label>
@@ -81,7 +104,13 @@
       [(ngModel)]="user.address"
       #address='ngModel'
       />
+      
+      {{ address.errors | json }}
+      {{ address.valid | json }}
     </div>
+    
+<!-- ============================================================== -->
+
 
     <div class="form-group col-md-6">
         <label for="unit" class="col-form-label"> Unit:</label>
@@ -94,6 +123,7 @@
         #address='ngModel'
         />
       </div>
+      
 
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -106,7 +136,12 @@
       [(ngModel)]="user.city"
       #city='ngModel'
       />
+      {{ city.errors | json }}
+      {{ city.valid | json }}
     </div>
+  <!-- ============================================================== -->
+  
+   
 
     <div class="form-group col-md-4">
       <label for="state" class="col-form-label">State:</label>
@@ -117,7 +152,12 @@
       [(ngModel)]="user.state"
       #state='ngModel'
       >Choose</select>
+      {{ state.errors | json }}
+      {{ state.valid | json }}
     </div>
+  <!-- ============================================================== -->
+  
+    
   </div>
   </div>
 
