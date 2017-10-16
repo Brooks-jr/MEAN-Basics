@@ -8,13 +8,16 @@ import { User } from './user';
 })
 export class AppComponent {
   title = 'Angular Registration';
-
-  user = new User();
-  users = [];
   
+  users = [];
+  user = new User();
+  
+
   onSubmit(){
-    this.users.push(this.user);
+    
     this.user = new User();
+    this.users.push(this.user);
+    
   }
 
 }
