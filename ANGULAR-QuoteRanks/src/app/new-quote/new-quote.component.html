@@ -1,0 +1,38 @@
+
+<form (submit)="onSUbmit(input)" #input="ngForm">
+
+  <label for="text">Quote:</label><br>
+  <textarea  
+    placeholder="Your Quote Here..."
+    name="text" 
+    required 
+    minlength="3" 
+    [(ngModel)]="addQuote.text"
+    #text='ngModel'
+    cols="40"
+    rows="5"
+    
+  ></textarea><br>
+
+  {{ text.errors | json }}
+  {{ text.valid | json }}
+  <p *ngIf="!text.valid">Quote Not Valid</p><br><br>
+  <!-- ====================================================== -->
+
+  <label for="by">Who Said It:</label><br>
+  <input  
+    placeholder="-Originator Name Here"
+    type="text"
+    name="by" 
+    required 
+    minlength="2" 
+    [(ngModel)]="addQuote.by"
+    #by='ngModel'
+  /><br>
+
+  {{ by.errors | json }}
+  {{ by.valid | json }}
+  <p *ngIf="!by.valid">Name Not Valid</p><br><br>
+
+  <button type='submit' [hidden]="!input.valid">Add Quote</button>
+</form>

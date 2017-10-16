@@ -22,13 +22,11 @@ ng serve
 //import into app.module.ts file//
 
 import { FormsModule } from '@angular/forms'; // <-- Import FormsModule
-
 import { HttpModule } from '@angular/http'; // <-- Import HttpModule
 
 ( - goes into imports:[]
 
 FormsModule, // <-- Include module in our AppModules
-
 HttpModule // <-- Include module in our AppModules )
 =====================================
 
