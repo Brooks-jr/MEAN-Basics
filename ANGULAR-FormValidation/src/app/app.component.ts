@@ -15,9 +15,8 @@ export class AppComponent {
 
   onSubmit(){
     
-    this.user = new User();
     this.users.push(this.user);
-    
+    this.user = new User();
   }
 
 }

@@ -220,7 +220,7 @@
       {{ state.errors | json }}
       {{ state.valid | json }}
       <p *ngIf="!state.valid">State Required</p>
-      
+
     </div>
   <!-- ============================================================== -->
   
@@ -236,7 +236,7 @@
   </div>
 
   
-  <button type="submit" class="btn btn-primary">Register</button>
+  <button *ngIf ="first_name.valid && last_name.valid && email.valid && password.valid && address.valid && city.valid && state.valid" type="submit" class="btn btn-primary">Register</button>
   
 
 
@@ -245,7 +245,7 @@
 
 </div><br><br><br><br>
 
-  
+
 {{user | json}}<br><br>
 {{users | json}}
   
