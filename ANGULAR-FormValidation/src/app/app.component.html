@@ -128,8 +128,10 @@
         type="text" 
         name="unit" 
         [(ngModel)]="user.unit"
-        #address='ngModel'
+        #unit='ngModel'
         />
+        {{ unit.errors | json }}
+        {{ unit.valid | json }}
       </div>
       
 
