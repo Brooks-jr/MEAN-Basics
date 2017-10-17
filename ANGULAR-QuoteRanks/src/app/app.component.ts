@@ -8,7 +8,7 @@ import {NgForm} from '@angular/forms';
 })
 export class AppComponent 
   {
-    title = 'Angular Quote Ranks';
+    title = 'Quote Ranks';
 
     quotes = [];
 
