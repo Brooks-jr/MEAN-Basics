@@ -16,4 +16,10 @@ export class AppComponent
       {
         this.quotes.push(quote);
       }
+
+    deleteQuote(quote) 
+      {
+        const idx = this.quotes.indexOf(quote);
+        this.quotes.splice(idx, 1);
+      }
   }

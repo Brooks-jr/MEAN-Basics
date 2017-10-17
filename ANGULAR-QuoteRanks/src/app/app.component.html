@@ -8,3 +8,6 @@
 <hr>
 
 <app-new-quote [quotes]="quotes" (addQuoteEvent)="addQuote($event)"></app-new-quote>
+<app-all-quotes [quotes]="quotes"  (deleteQuoteEvent)="deleteQuote($event)"></app-all-quotes>
+
+{{quotes | json}}

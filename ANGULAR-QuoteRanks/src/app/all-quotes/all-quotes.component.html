@@ -1,3 +1,11 @@
 <p>
   all-quotes works!
 </p>
+<div *ngFor="let quote of quotes">
+  <h3>{{quote.text}}</h3>
+  <h6>-{{quote.by}}</h6>
+  <h4>{{quote.rating}}</h4>
+  <button class='up' (click)="upVote(quote)">Vote+</button>
+  <button class='down' (click)="downVote(quote)">Vote-</button>
+  <button class='delete' (click)="delete(quote)">Delete</button>
+</div>
