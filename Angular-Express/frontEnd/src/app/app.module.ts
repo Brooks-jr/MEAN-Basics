@@ -5,10 +5,16 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ApiService } from './api.service';
+import { PlayersListComponent } from './players-list/players-list.component';
+import { StatusGameComponent } from './status-game/status-game.component';
+import { PlayersAddplayerComponent } from './players-addplayer/players-addplayer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PlayersListComponent,
+    StatusGameComponent,
+    PlayersAddplayerComponent
   ],
   imports: [
     BrowserModule,
