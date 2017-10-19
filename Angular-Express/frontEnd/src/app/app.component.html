@@ -1,6 +1,8 @@
-{{test | json}}
 
-<a [routerLink]="['/']">Root</a> |
+
+<!-- <a [routerLink]="['/']">Home</a> | -->
 <a [routerLink]="['/players/list']" >Manage Players</a> |
 <a [routerLink]="['/players/addplayer']" >Add Player</a> |
 <a [routerLink]="['/status/game/:id']" >Manage Player Status</a>
+
+<router-outlet></router-outlet>
