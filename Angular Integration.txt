@@ -34,7 +34,6 @@
   - controllers
   - models
 ========================================
-  
 
 7. In config folder
   - routes.js
